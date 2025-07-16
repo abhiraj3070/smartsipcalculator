@@ -118,29 +118,31 @@ const AdvancedCalculators = ({ sipAmount, duration, returnRate }) => {
         <h3 className="text-xl font-bold text-gray-800 mb-4">🧮 Advanced Calculators</h3>
         
         {/* Tab Navigation */}
-        <div className="flex space-x-1 bg-gray-100 rounded-lg p-1">
+        <div className="advanced-calculator-tabs flex space-x-1 bg-gray-100 rounded-lg p-1">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex-1 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+              className={`advanced-calculator-tab flex-1 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 text-center ${
                 activeTab === tab.id
                   ? 'bg-white text-blue-600 shadow-sm'
                   : 'text-gray-600 hover:text-gray-800'
               }`}
             >
-              <span className="mr-1">{tab.icon}</span>
-              <span className="hidden sm:inline">{tab.label.split(' ').slice(1).join(' ')}</span>
+              <div className="flex flex-col items-center space-y-1">
+                <span className="tab-icon text-lg">{tab.icon}</span>
+                <span className="tab-label text-xs leading-tight">{tab.label.split(' ').slice(1).join(' ')}</span>
+              </div>
             </button>
           ))}
         </div>
       </div>
 
-      <div className="p-6">
+      <div className="advanced-calculator-content p-6">
         {/* Inflation Impact Tab */}
         {activeTab === 'inflation' && (
           <div className="space-y-6">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="advanced-calculator-grid grid grid-cols-1 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Expected Inflation Rate (%)
@@ -149,7 +151,7 @@ const AdvancedCalculators = ({ sipAmount, duration, returnRate }) => {
                   type="number"
                   value={inflationRate}
                   onChange={(e) => setInflationRate(parseFloat(e.target.value) || 0)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="advanced-calculator-input w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   step="0.5"
                 />
               </div>
@@ -163,31 +165,31 @@ const AdvancedCalculators = ({ sipAmount, duration, returnRate }) => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-600">
+            <div className="advanced-calculator-grid grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="advanced-calculator-card bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4">
+                <div className="advanced-calculator-result text-center">
+                  <div className="advanced-calculator-result-value text-2xl font-bold text-blue-600">
                     ₹{inflationData.nominalValue.toLocaleString(undefined, {maximumFractionDigits: 0})}
                   </div>
-                  <div className="text-sm text-blue-700 mt-1">Nominal Value</div>
+                  <div className="advanced-calculator-result-label text-sm text-blue-700 mt-1">Nominal Value</div>
                 </div>
               </div>
               
-              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-4">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600">
+              <div className="advanced-calculator-card bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-4">
+                <div className="advanced-calculator-result text-center">
+                  <div className="advanced-calculator-result-value text-2xl font-bold text-green-600">
                     ₹{inflationData.realValue.toLocaleString(undefined, {maximumFractionDigits: 0})}
                   </div>
-                  <div className="text-sm text-green-700 mt-1">Real Value (Today's Power)</div>
+                  <div className="advanced-calculator-result-label text-sm text-green-700 mt-1">Real Value (Today's Power)</div>
                 </div>
               </div>
               
-              <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-xl p-4">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-red-600">
+              <div className="advanced-calculator-card bg-gradient-to-br from-red-50 to-red-100 rounded-xl p-4">
+                <div className="advanced-calculator-result text-center">
+                  <div className="advanced-calculator-result-value text-2xl font-bold text-red-600">
                     ₹{inflationData.inflationImpact.toLocaleString(undefined, {maximumFractionDigits: 0})}
                   </div>
-                  <div className="text-sm text-red-700 mt-1">Inflation Impact</div>
+                  <div className="advanced-calculator-result-label text-sm text-red-700 mt-1">Inflation Impact</div>
                 </div>
               </div>
             </div>
