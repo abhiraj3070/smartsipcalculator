@@ -10,14 +10,18 @@ A comprehensive SIP (Systematic Investment Plan) calculator built with React tha
 - **Goal Planner**: Plan your financial goals
 - **Interactive Charts**: Visual representation of investment growth
 - **PDF Reports**: Generate downloadable investment reports
+- **Mobile Responsive**: Fully optimized for mobile devices and tablets
+- **Touch-Friendly**: Intuitive touch controls for mobile users
 
 ## Technologies Used
 
 - React 18.2.0
 - JavaScript (ES6+)
-- CSS3 for styling
+- CSS3 for styling with responsive design
+- Tailwind CSS for utility classes
 - jsPDF for PDF generation
-- Chart.js for data visualization
+- Custom Canvas API for chart rendering
+- Mobile-first responsive design approach
 
 ## Installation
 
@@ -57,6 +61,29 @@ npm start
 3. **Goal Planner**: Set financial goals and calculate required monthly investments
 4. **Charts**: View interactive charts showing investment growth over time
 5. **PDF Reports**: Generate and download detailed investment reports
+
+## Mobile Optimization
+
+The Smart SIP Calculator is fully optimized for mobile devices with the following features:
+
+### 📱 Mobile-First Design
+- **Responsive Layout**: Adapts to all screen sizes (320px to 1920px+)
+- **Touch-Friendly Controls**: Large buttons and touch targets (44px minimum)
+- **Optimized Typography**: Readable font sizes across all devices
+- **Flexible Grid System**: Stacks elements vertically on mobile
+
+### 🎯 Mobile-Specific Features
+- **Simplified Navigation**: Collapsible tab system for small screens
+- **Gesture Support**: Swipe and touch interactions
+- **Optimized Input Controls**: Mobile-friendly number inputs with +/- buttons
+- **Responsive Charts**: Canvas-based charts that scale with screen size
+- **Mobile Keyboard Support**: Proper input types for numeric keyboards
+
+### 📊 Performance Optimizations
+- **Efficient Rendering**: Optimized canvas drawing for mobile GPUs
+- **Reduced Motion**: Disabled animations on low-performance devices
+- **Touch Optimization**: Improved touch response and feedback
+- **Memory Management**: Efficient state management for mobile browsers
 
 ## Contributing
 
