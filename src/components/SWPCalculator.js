@@ -245,11 +245,11 @@ const SWPCalculator = ({ sipResult = null }) => {
         </div>
       )}
 
-      <div className="grid lg:grid-cols-2 gap-8">
+      <div className="swp-grid grid lg:grid-cols-2 gap-8">
         {/* Left Panel - Inputs */}
         <div className="space-y-6">
           {/* Total Investment */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
+          <div className="input-card bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
             <label className="block text-gray-700 text-sm font-semibold mb-4">
               💰 Total Investment Corpus
               {useSipData && (
@@ -258,52 +258,58 @@ const SWPCalculator = ({ sipResult = null }) => {
                 </span>
               )}
             </label>
-            <div className="flex items-center bg-gradient-to-r from-gray-50 to-orange-50 rounded-xl p-2">            <button
-              onClick={() => handleValueChange(setTotalInvestment, totalInvestment, -50000)}
-              disabled={useSipData}
-              className={`w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-lg hover:from-red-600 hover:to-pink-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110 ${
-                useSipData ? 'opacity-50 cursor-not-allowed' : ''
-              }`}
-            >
-              -
-            </button><input
-              type="number"
-              value={totalInvestment}
-              onChange={(e) => setTotalInvestment(parseInt(e.target.value) || 0)}
-              disabled={useSipData}
-              className={`flex-1 bg-transparent text-center text-2xl font-bold text-gray-800 focus:outline-none mx-4 ${
-                useSipData ? 'cursor-not-allowed opacity-60' : ''
-              }`}
-              placeholder="Enter total corpus"
-            />            <button
-              onClick={() => handleValueChange(setTotalInvestment, totalInvestment, 50000)}
-              disabled={useSipData}
-              className={`w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg hover:from-green-600 hover:to-emerald-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110 ${
-                useSipData ? 'opacity-50 cursor-not-allowed' : ''
-              }`}
-            >
-              +
-            </button>
-            </div>          <div className="mt-4">
-            <div className="flex flex-wrap gap-2">
-              {presetInvestments.map((amount) => (
+            <div className="input-control flex items-center bg-gradient-to-r from-gray-50 to-orange-50 rounded-xl p-2">
+              <div className="input-control-row">
                 <button
-                  key={amount}
-                  onClick={() => setTotalInvestment(amount)}
+                  onClick={() => handleValueChange(setTotalInvestment, totalInvestment, -50000)}
                   disabled={useSipData}
-                  className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 transform hover:scale-105 ${
-                    useSipData
-                      ? 'opacity-50 cursor-not-allowed bg-gray-200 text-gray-500'
-                      : totalInvestment === amount
-                      ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-md'
-                      : 'bg-orange-100 text-orange-700 hover:bg-orange-200'
+                  className={`input-button w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-lg hover:from-red-600 hover:to-pink-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110 ${
+                    useSipData ? 'opacity-50 cursor-not-allowed' : ''
                   }`}
                 >
-                  {amount >= 1000000 ? `₹${(amount/1000000).toFixed(1)}Cr` : `₹${(amount/100000).toFixed(1)}L`}
+                  -
                 </button>
-              ))}
+                <input
+                  type="number"
+                  value={totalInvestment}
+                  onChange={(e) => setTotalInvestment(parseInt(e.target.value) || 0)}
+                  disabled={useSipData}
+                  className={`input-field flex-1 bg-transparent text-center text-2xl font-bold text-gray-800 focus:outline-none mx-4 ${
+                    useSipData ? 'cursor-not-allowed opacity-60' : ''
+                  }`}
+                  placeholder="Enter total corpus"
+                />
+                <button
+                  onClick={() => handleValueChange(setTotalInvestment, totalInvestment, 50000)}
+                  disabled={useSipData}
+                  className={`input-button w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg hover:from-green-600 hover:to-emerald-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110 ${
+                    useSipData ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
+                >
+                  +
+                </button>
+              </div>
             </div>
-          </div>
+            <div className="mt-4">
+              <div className="preset-grid flex flex-wrap gap-2">
+                {presetInvestments.map((amount) => (
+                  <button
+                    key={amount}
+                    onClick={() => setTotalInvestment(amount)}
+                    disabled={useSipData}
+                    className={`preset-button px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 transform hover:scale-105 ${
+                      useSipData
+                        ? 'opacity-50 cursor-not-allowed bg-gray-200 text-gray-500'
+                        : totalInvestment === amount
+                        ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-md'
+                        : 'bg-orange-100 text-orange-700 hover:bg-orange-200'
+                    }`}
+                  >
+                    {amount >= 1000000 ? `₹${(amount/1000000).toFixed(1)}Cr` : `₹${(amount/100000).toFixed(1)}L`}
+                  </button>
+                ))}
+              </div>
+            </div>
             <div className="mt-4 text-center">
               <span className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
                 {formatCurrency(totalInvestment)}
@@ -313,7 +319,7 @@ const SWPCalculator = ({ sipResult = null }) => {
           </div>
 
           {/* Monthly Withdrawal */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
+          <div className="input-card bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
             <label className="block text-gray-700 text-sm font-semibold mb-4">
               📤 Monthly Withdrawal Amount
               {useSipData && (
@@ -322,34 +328,36 @@ const SWPCalculator = ({ sipResult = null }) => {
                 </span>
               )}
             </label>
-            <div className="flex items-center bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl p-2">
-              <button
-                onClick={() => handleValueChange(setMonthlyWithdrawal, monthlyWithdrawal, -1000)}
-                className="w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-lg hover:from-red-600 hover:to-pink-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110"
-              >
-                -
-              </button>
-              <input
-                type="number"
-                value={monthlyWithdrawal}
-                onChange={(e) => setMonthlyWithdrawal(parseInt(e.target.value) || 0)}
-                className="flex-1 bg-transparent text-center text-2xl font-bold text-gray-800 focus:outline-none mx-4"
-                placeholder="Enter withdrawal amount"
-              />
-              <button
-                onClick={() => handleValueChange(setMonthlyWithdrawal, monthlyWithdrawal, 1000)}
-                className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg hover:from-green-600 hover:to-emerald-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110"
-              >
-                +
-              </button>
+            <div className="input-control flex items-center bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl p-2">
+              <div className="input-control-row">
+                <button
+                  onClick={() => handleValueChange(setMonthlyWithdrawal, monthlyWithdrawal, -1000)}
+                  className="input-button w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-lg hover:from-red-600 hover:to-pink-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110"
+                >
+                  -
+                </button>
+                <input
+                  type="number"
+                  value={monthlyWithdrawal}
+                  onChange={(e) => setMonthlyWithdrawal(parseInt(e.target.value) || 0)}
+                  className="input-field flex-1 bg-transparent text-center text-2xl font-bold text-gray-800 focus:outline-none mx-4"
+                  placeholder="Enter withdrawal amount"
+                />
+                <button
+                  onClick={() => handleValueChange(setMonthlyWithdrawal, monthlyWithdrawal, 1000)}
+                  className="input-button w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg hover:from-green-600 hover:to-emerald-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110"
+                >
+                  +
+                </button>
+              </div>
             </div>
             <div className="mt-4">
-              <div className="flex flex-wrap gap-2">
+              <div className="preset-grid flex flex-wrap gap-2">
                 {presetWithdrawals.map((amount) => (
                   <button
                     key={amount}
                     onClick={() => setMonthlyWithdrawal(amount)}
-                    className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 transform hover:scale-105 ${
+                    className={`preset-button px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 transform hover:scale-105 ${
                       monthlyWithdrawal === amount
                         ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-md'
                         : 'bg-blue-100 text-blue-700 hover:bg-blue-200'
@@ -369,47 +377,54 @@ const SWPCalculator = ({ sipResult = null }) => {
           </div>
 
           {/* Annual Return */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
+          {/* Annual Return */}
+          <div className="input-card bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
             <label className="block text-gray-700 text-sm font-semibold mb-4">
               📈 Expected Annual Return
             </label>
-            <div className="flex items-center bg-gradient-to-r from-gray-50 to-green-50 rounded-xl p-2">            <button
-              onClick={() => handleValueChange(setAnnualReturn, annualReturn, -0.5)}
-              disabled={useSipData}
-              className={`w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-lg hover:from-red-600 hover:to-pink-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110 ${
-                useSipData ? 'opacity-50 cursor-not-allowed' : ''
-              }`}
-            >
-              -
-            </button><input
-              type="number"
-              value={annualReturn}
-              onChange={(e) => setAnnualReturn(parseFloat(e.target.value) || 0)}
-              disabled={useSipData}
-              className={`flex-1 bg-transparent text-center text-2xl font-bold text-gray-800 focus:outline-none mx-4 ${
-                useSipData ? 'cursor-not-allowed opacity-60' : ''
-              }`}
-              placeholder="Enter return rate"
-              step="0.5"
-            />            <button
-              onClick={() => handleValueChange(setAnnualReturn, annualReturn, 0.5)}
-              disabled={useSipData}
-              className={`w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg hover:from-green-600 hover:to-emerald-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110 ${
-                useSipData ? 'opacity-50 cursor-not-allowed' : ''
-              }`}
-            >
-              +
-            </button>
-            </div>
-            <div className="mt-4">            <div className="flex flex-wrap gap-2">
-              {presetReturns.map((returnRate) => (
+            <div className="input-control flex items-center bg-gradient-to-r from-gray-50 to-green-50 rounded-xl p-2">
+              <div className="input-control-row">
                 <button
-                  key={returnRate}
-                  onClick={() => setAnnualReturn(returnRate)}
+                  onClick={() => handleValueChange(setAnnualReturn, annualReturn, -0.5)}
                   disabled={useSipData}
-                  className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 transform hover:scale-105 ${
-                    useSipData
-                      ? 'opacity-50 cursor-not-allowed bg-gray-200 text-gray-500'
+                  className={`input-button w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-lg hover:from-red-600 hover:to-pink-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110 ${
+                    useSipData ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
+                >
+                  -
+                </button>
+                <input
+                  type="number"
+                  value={annualReturn}
+                  onChange={(e) => setAnnualReturn(parseFloat(e.target.value) || 0)}
+                  disabled={useSipData}
+                  className={`input-field flex-1 bg-transparent text-center text-2xl font-bold text-gray-800 focus:outline-none mx-4 ${
+                    useSipData ? 'cursor-not-allowed opacity-60' : ''
+                  }`}
+                  placeholder="Enter return rate"
+                  step="0.5"
+                />
+                <button
+                  onClick={() => handleValueChange(setAnnualReturn, annualReturn, 0.5)}
+                  disabled={useSipData}
+                  className={`input-button w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg hover:from-green-600 hover:to-emerald-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110 ${
+                    useSipData ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
+                >
+                  +
+                </button>
+              </div>
+            </div>
+            <div className="mt-4">
+              <div className="preset-grid flex flex-wrap gap-2">
+                {presetReturns.map((returnRate) => (
+                  <button
+                    key={returnRate}
+                    onClick={() => setAnnualReturn(returnRate)}
+                    disabled={useSipData}
+                    className={`preset-button px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 transform hover:scale-105 ${
+                      useSipData
+                        ? 'opacity-50 cursor-not-allowed bg-gray-200 text-gray-500'
                       : annualReturn === returnRate
                       ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-md'
                       : 'bg-green-100 text-green-700 hover:bg-green-200'
@@ -434,35 +449,35 @@ const SWPCalculator = ({ sipResult = null }) => {
           {result && (
             <>
               {/* Main Result Card */}
-              <div className="bg-gradient-to-br from-orange-600 via-red-600 to-pink-600 rounded-2xl shadow-2xl p-8 text-white transform hover:scale-105 transition-transform duration-300">
+              <div className="result-card bg-gradient-to-br from-orange-600 via-red-600 to-pink-600 rounded-2xl shadow-2xl p-8 text-white transform hover:scale-105 transition-transform duration-300">
                 <div className="text-center mb-8">
                   <h2 className="text-2xl font-bold mb-2">📤 Your SWP Plan</h2>
                   <p className="text-orange-100">Systematic withdrawal analysis</p>
                 </div>
                 
-                <div className="grid grid-cols-1 gap-6">
-                  <div className="bg-white/20 rounded-xl p-6 backdrop-blur-sm transform hover:scale-105 transition-transform duration-200">
+                <div className="result-grid grid grid-cols-1 gap-6">
+                  <div className="result-item bg-white/20 rounded-xl p-6 backdrop-blur-sm transform hover:scale-105 transition-transform duration-200">
                     <div className="text-center">
-                      <div className="text-4xl font-bold mb-2 animate-pulse">
+                      <div className="result-value text-4xl font-bold mb-2 animate-pulse">
                         {result.yearsLasting.toFixed(1)} Years
                       </div>
-                      <div className="text-orange-100 text-sm">Corpus Duration</div>
+                      <div className="result-label text-orange-100 text-sm">Corpus Duration</div>
                     </div>
                   </div>
                   
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white/20 rounded-xl p-4 backdrop-blur-sm transform hover:scale-105 transition-transform duration-200">
+                  <div className="result-grid grid grid-cols-2 gap-4">
+                    <div className="result-item bg-white/20 rounded-xl p-4 backdrop-blur-sm transform hover:scale-105 transition-transform duration-200">
                       <div className="text-center">
-                        <div className="text-xl font-bold mb-1">
+                        <div className="result-value text-xl font-bold mb-1">
                           {formatCurrency(result.totalWithdrawn)}
                         </div>
-                        <div className="text-orange-100 text-xs">Total Withdrawn</div>
+                        <div className="result-label text-orange-100 text-xs">Total Withdrawn</div>
                       </div>
                     </div>
                     
-                    <div className="bg-white/20 rounded-xl p-4 backdrop-blur-sm transform hover:scale-105 transition-transform duration-200">
+                    <div className="result-item bg-white/20 rounded-xl p-4 backdrop-blur-sm transform hover:scale-105 transition-transform duration-200">
                       <div className="text-center">
-                        <div className="text-xl font-bold mb-1">
+                        <div className="result-value text-xl font-bold mb-1">
                           {result.monthlyIncomePercentage.toFixed(2)}%
                         </div>
                         <div className="text-orange-100 text-xs">Monthly Income %</div>

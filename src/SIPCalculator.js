@@ -454,38 +454,40 @@ const SIPCalculator = () => {
               </div>
 
               {/* Duration Card */}
-              <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
+              <div className="input-card bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
                 <label className="block text-gray-700 text-sm font-semibold mb-4">
                   ⏰ Investment Duration
                 </label>
-                <div className="flex items-center bg-gradient-to-r from-gray-50 to-purple-50 rounded-xl p-2">
-                  <button
-                    onClick={() => handleValueChange(setSipDuration, sipDuration, -1)}
-                    className="w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-lg hover:from-red-600 hover:to-pink-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110"
-                  >
-                    -
-                  </button>
-                  <input
-                    type="number"
-                    value={sipDuration}
-                    onChange={(e) => handleSipDurationChange(e.target.value)}
-                    className="flex-1 bg-transparent text-center text-2xl font-bold text-gray-800 focus:outline-none mx-4"
-                    placeholder="Enter years"
-                  />
-                  <button
-                    onClick={() => handleValueChange(setSipDuration, sipDuration, 1)}
-                    className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg hover:from-green-600 hover:to-emerald-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110"
-                  >
-                    +
-                  </button>
+                <div className="input-control flex items-center bg-gradient-to-r from-gray-50 to-purple-50 rounded-xl p-2">
+                  <div className="input-control-row">
+                    <button
+                      onClick={() => handleValueChange(setSipDuration, sipDuration, -1)}
+                      className="input-button w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-lg hover:from-red-600 hover:to-pink-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110"
+                    >
+                      -
+                    </button>
+                    <input
+                      type="number"
+                      value={sipDuration}
+                      onChange={(e) => handleSipDurationChange(e.target.value)}
+                      className="input-field flex-1 bg-transparent text-center text-2xl font-bold text-gray-800 focus:outline-none mx-4"
+                      placeholder="Enter years"
+                    />
+                    <button
+                      onClick={() => handleValueChange(setSipDuration, sipDuration, 1)}
+                      className="input-button w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg hover:from-green-600 hover:to-emerald-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110"
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
                 <div className="mt-4">
-                  <div className="flex flex-wrap gap-2">
+                  <div className="preset-grid flex flex-wrap gap-2">
                     {presetDurations.map((duration) => (
                       <button
                         key={duration}
                         onClick={() => setSipDuration(duration)}
-                        className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 transform hover:scale-105 ${
+                        className={`preset-button px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 transform hover:scale-105 ${
                           sipDuration === duration
                             ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-md'
                             : 'bg-purple-100 text-purple-700 hover:bg-purple-200'
@@ -510,39 +512,41 @@ const SIPCalculator = () => {
               </div>
 
               {/* Annual Return Card */}
-              <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
+              <div className="input-card bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
                 <label className="block text-gray-700 text-sm font-semibold mb-4">
                   📈 Expected Annual Return
                 </label>
-                <div className="flex items-center bg-gradient-to-r from-gray-50 to-green-50 rounded-xl p-2">
-                  <button
-                    onClick={() => handleValueChange(setAnnualReturn, annualReturn, -0.5)}
-                    className="w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-lg hover:from-red-600 hover:to-pink-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110"
-                  >
-                    -
-                  </button>
-                  <input
-                    type="number"
-                    value={annualReturn}
-                    onChange={(e) => handleAnnualReturnChange(e.target.value)}
-                    className="flex-1 bg-transparent text-center text-2xl font-bold text-gray-800 focus:outline-none mx-4"
-                    placeholder="Enter rate"
-                    step="0.5"
-                  />
-                  <button
-                    onClick={() => handleValueChange(setAnnualReturn, annualReturn, 0.5)}
-                    className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg hover:from-green-600 hover:to-emerald-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110"
-                  >
-                    +
-                  </button>
+                <div className="input-control flex items-center bg-gradient-to-r from-gray-50 to-green-50 rounded-xl p-2">
+                  <div className="input-control-row">
+                    <button
+                      onClick={() => handleValueChange(setAnnualReturn, annualReturn, -0.5)}
+                      className="input-button w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-lg hover:from-red-600 hover:to-pink-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110"
+                    >
+                      -
+                    </button>
+                    <input
+                      type="number"
+                      value={annualReturn}
+                      onChange={(e) => handleAnnualReturnChange(e.target.value)}
+                      className="input-field flex-1 bg-transparent text-center text-2xl font-bold text-gray-800 focus:outline-none mx-4"
+                      placeholder="Enter rate"
+                      step="0.5"
+                    />
+                    <button
+                      onClick={() => handleValueChange(setAnnualReturn, annualReturn, 0.5)}
+                      className="input-button w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg hover:from-green-600 hover:to-emerald-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110"
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
                 <div className="mt-4">
-                  <div className="flex flex-wrap gap-2">
+                  <div className="preset-grid flex flex-wrap gap-2">
                     {presetReturns.map((returnRate) => (
                       <button
                         key={returnRate}
                         onClick={() => setAnnualReturn(returnRate)}
-                        className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 transform hover:scale-105 ${
+                        className={`preset-button px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 transform hover:scale-105 ${
                           annualReturn === returnRate
                             ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-md'
                             : 'bg-green-100 text-green-700 hover:bg-green-200'
@@ -568,18 +572,18 @@ const SIPCalculator = () => {
 
               {/* Save Calculation */}
               {result && (
-                <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
+                <div className="input-card bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
                   <h4 className="font-semibold mb-3 text-gray-800">💾 Save This Calculation</h4>
                   <p className="text-sm text-gray-600 mb-3">
                     Save your calculation to access it later from the Saved tab
                   </p>
-                  <div className="flex gap-2">
+                  <div className="save-section flex gap-2">
                     <input
                       type="text"
                       placeholder="Give this calculation a name..."
                       value={calculationName}
                       onChange={(e) => setCalculationName(e.target.value)}
-                      className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="save-input flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       onKeyPress={(e) => {
                         if (e.key === 'Enter') {
                           saveCalculation();
@@ -589,7 +593,7 @@ const SIPCalculator = () => {
                     <button
                       onClick={saveCalculation}
                       disabled={!calculationName.trim()}
-                      className={`px-4 py-2 rounded-lg font-semibold transition-all duration-200 ${
+                      className={`save-button px-4 py-2 rounded-lg font-semibold transition-all duration-200 ${
                         calculationName.trim()
                           ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-600 hover:to-purple-600 transform hover:scale-105'
                           : 'bg-gray-300 text-gray-500 cursor-not-allowed'
@@ -621,29 +625,29 @@ const SIPCalculator = () => {
               {result && (
                 <>
                   {/* Main Result Card */}
-                  <div className="bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 rounded-2xl shadow-2xl p-8 text-white transform hover:scale-105 transition-transform duration-300">
+                  <div className="result-card bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 rounded-2xl shadow-2xl p-8 text-white transform hover:scale-105 transition-transform duration-300">
                     <div className="text-center mb-8">
                       <h2 className="text-2xl font-bold mb-2">🚀 Your SIP Journey</h2>
                       <p className="text-blue-100">Investment projection for {result.sipDuration} years</p>
                     </div>
                     
-                    <div className="grid grid-cols-1 gap-6">
-                      <div className="bg-white/20 rounded-xl p-6 backdrop-blur-sm transform hover:scale-105 transition-transform duration-200">
+                    <div className="result-grid grid grid-cols-1 gap-6">
+                      <div className="result-item bg-white/20 rounded-xl p-6 backdrop-blur-sm transform hover:scale-105 transition-transform duration-200">
                         <div className="text-center">
-                          <div className="text-4xl font-bold mb-2 animate-pulse">
+                          <div className="result-value text-4xl font-bold mb-2 animate-pulse">
                             {formatCurrency(result.futureValue)}
                           </div>
-                          <div className="text-blue-100 text-sm">Final Value</div>
+                          <div className="result-label text-blue-100 text-sm">Final Value</div>
                         </div>
                       </div>
                       
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="bg-white/20 rounded-xl p-4 backdrop-blur-sm transform hover:scale-105 transition-transform duration-200">
+                      <div className="result-grid grid grid-cols-2 gap-4">
+                        <div className="result-item bg-white/20 rounded-xl p-4 backdrop-blur-sm transform hover:scale-105 transition-transform duration-200">
                           <div className="text-center">
-                            <div className="text-xl font-bold mb-1">
+                            <div className="result-value text-xl font-bold mb-1">
                               {formatCurrency(result.totalInvestment)}
                             </div>
-                            <div className="text-blue-100 text-xs">Total Investment</div>
+                            <div className="result-label text-blue-100 text-xs">Total Investment</div>
                           </div>
                         </div>
                         
