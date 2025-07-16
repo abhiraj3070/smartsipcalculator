@@ -197,12 +197,12 @@ const SWPChart = ({ data, width = 600, height = 300 }) => {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
+    <div className="swp-chart-container chart-container bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
       <canvas
         ref={canvasRef}
         width={width}
         height={height}
-        className="w-full h-auto"
+        className="swp-chart-canvas chart-canvas w-full h-auto"
       />
     </div>
   );
