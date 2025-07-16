@@ -198,7 +198,7 @@ const SWPCalculator = ({ sipResult = null }) => {
 
       {/* SIP Integration Toggle */}
       {sipResult && (
-        <div className="max-w-4xl mx-auto mb-6">
+        <div className="swp-sip-toggle max-w-4xl mx-auto mb-6">
           <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 border border-blue-200">
             <div className="flex items-center justify-between mb-4">
               <div>
@@ -220,20 +220,20 @@ const SWPCalculator = ({ sipResult = null }) => {
             </div>
             
             {useSipData && (
-              <div className="grid grid-cols-3 gap-4 mt-4">
-                <div className="text-center p-3 bg-white rounded-lg shadow-sm">
+              <div className="swp-sip-stats grid grid-cols-3 gap-4 mt-4">
+                <div className="swp-sip-stat-item text-center p-3 bg-white rounded-lg shadow-sm">
                   <div className="text-sm text-gray-600">SIP Corpus</div>
                   <div className="text-lg font-bold text-blue-600">
                     {formatCurrency(sipResult.futureValue)}
                   </div>
                 </div>
-                <div className="text-center p-3 bg-white rounded-lg shadow-sm">
+                <div className="swp-sip-stat-item text-center p-3 bg-white rounded-lg shadow-sm">
                   <div className="text-sm text-gray-600">Return Rate</div>
                   <div className="text-lg font-bold text-green-600">
                     {sipResult.annualReturn}%
                   </div>
                 </div>
-                <div className="text-center p-3 bg-white rounded-lg shadow-sm">
+                <div className="swp-sip-stat-item text-center p-3 bg-white rounded-lg shadow-sm">
                   <div className="text-sm text-gray-600">Suggested SWP</div>
                   <div className="text-lg font-bold text-orange-600">
                     {formatCurrency(Math.round((sipResult.futureValue * 0.04) / 12))}
@@ -247,9 +247,9 @@ const SWPCalculator = ({ sipResult = null }) => {
 
       <div className="swp-grid grid lg:grid-cols-2 gap-8">
         {/* Left Panel - Inputs */}
-        <div className="space-y-6">
+        <div className="swp-input-section space-y-6">
           {/* Total Investment */}
-          <div className="input-card bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
+          <div className="swp-input-card input-card bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
             <label className="block text-gray-700 text-sm font-semibold mb-4">
               💰 Total Investment Corpus
               {useSipData && (
@@ -319,7 +319,7 @@ const SWPCalculator = ({ sipResult = null }) => {
           </div>
 
           {/* Monthly Withdrawal */}
-          <div className="input-card bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
+          <div className="swp-input-card input-card bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
             <label className="block text-gray-700 text-sm font-semibold mb-4">
               📤 Monthly Withdrawal Amount
               {useSipData && (
@@ -377,8 +377,7 @@ const SWPCalculator = ({ sipResult = null }) => {
           </div>
 
           {/* Annual Return */}
-          {/* Annual Return */}
-          <div className="input-card bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
+          <div className="swp-input-card input-card bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
             <label className="block text-gray-700 text-sm font-semibold mb-4">
               📈 Expected Annual Return
             </label>
@@ -445,11 +444,11 @@ const SWPCalculator = ({ sipResult = null }) => {
         </div>
 
         {/* Right Panel - Results */}
-        <div className="space-y-6">
+        <div className="swp-result-section space-y-6">
           {result && (
             <>
               {/* Main Result Card */}
-              <div className="result-card bg-gradient-to-br from-orange-600 via-red-600 to-pink-600 rounded-2xl shadow-2xl p-8 text-white transform hover:scale-105 transition-transform duration-300">
+              <div className="swp-result-card result-card bg-gradient-to-br from-orange-600 via-red-600 to-pink-600 rounded-2xl shadow-2xl p-8 text-white transform hover:scale-105 transition-transform duration-300">
                 <div className="text-center mb-8">
                   <h2 className="text-2xl font-bold mb-2">📤 Your SWP Plan</h2>
                   <p className="text-orange-100">Systematic withdrawal analysis</p>
@@ -520,7 +519,7 @@ const SWPCalculator = ({ sipResult = null }) => {
               </div>
 
               {/* Detailed Analysis */}
-              <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
+              <div className="swp-detailed-card bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
                 <h3 className="text-xl font-bold text-gray-800 mb-6">📊 SWP Analysis</h3>
                 
                 <div className="grid grid-cols-1 gap-6 mb-6">
@@ -549,11 +548,11 @@ const SWPCalculator = ({ sipResult = null }) => {
                 </div>
 
                 {/* Your SWP Plan Section */}
-                <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
+                <div className="swp-detailed-card bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
                   <h3 className="text-xl font-bold text-gray-800 mb-6">📋 Your SWP Plan Summary</h3>
                   
                   {/* Plan Overview */}
-                  <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 mb-6">
+                  <div className="swp-plan-overview bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 mb-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <h4 className="font-semibold text-gray-800 mb-4">💰 Investment Details</h4>
@@ -608,7 +607,7 @@ const SWPCalculator = ({ sipResult = null }) => {
                   {/* Plan Timeline */}
                   <div className="mb-6">
                     <h4 className="font-semibold text-gray-800 mb-4">⏱️ Timeline Projection</h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div className="swp-timeline-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                       <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-4 text-white transform hover:scale-105 transition-transform duration-200 shadow-lg">
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-blue-100 text-sm font-medium">Duration</span>
@@ -750,7 +749,7 @@ const SWPCalculator = ({ sipResult = null }) => {
                         }
                         
                         return milestones.map((milestone, index) => (
-                          <div key={index} className={`flex items-center justify-between p-3 rounded-lg bg-gradient-to-r ${
+                          <div key={index} className={`swp-milestone-item flex items-center justify-between p-3 rounded-lg bg-gradient-to-r ${
                             milestone.color === 'green' ? 'from-green-50 to-green-100' :
                             milestone.color === 'blue' ? 'from-blue-50 to-blue-100' :
                             'from-yellow-50 to-yellow-100'
@@ -787,7 +786,7 @@ const SWPCalculator = ({ sipResult = null }) => {
                   {/* Monthly Income Breakdown */}
                   <div className="mb-6">
                     <h4 className="font-semibold text-gray-800 mb-4">💳 Monthly Income Breakdown</h4>
-                    <div className="bg-gray-50 rounded-lg p-4">
+                    <div className="swp-income-breakdown bg-gray-50 rounded-lg p-4">
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div className="text-center">
                           <div className="text-lg font-bold text-green-600">
@@ -866,7 +865,7 @@ const SWPCalculator = ({ sipResult = null }) => {
               </div>
 
               {/* Year-wise Data */}
-              <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
+              <div className="swp-year-wise-card bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
                 <h3 className="text-xl font-bold text-gray-800 mb-6">📅 Year-wise Corpus Depletion</h3>
                 
                 {/* Summary Cards */}
@@ -905,7 +904,7 @@ const SWPCalculator = ({ sipResult = null }) => {
                     const isCriticalCorpus = corpusPercentage < 10;
                     
                     return (
-                      <div key={index} className={`p-4 rounded-lg transform hover:scale-105 transition-transform duration-200 ${
+                      <div key={index} className={`swp-year-item p-4 rounded-lg transform hover:scale-105 transition-transform duration-200 ${
                         isCriticalCorpus ? 'bg-gradient-to-r from-red-50 to-red-100 border border-red-200' :
                         isLowCorpus ? 'bg-gradient-to-r from-yellow-50 to-yellow-100 border border-yellow-200' :
                         'bg-gradient-to-r from-gray-50 to-orange-50'
@@ -941,7 +940,7 @@ const SWPCalculator = ({ sipResult = null }) => {
                         </div>
                         
                         {/* Progress Bar */}
-                        <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
+                        <div className="swp-progress-container w-full bg-gray-200 rounded-full h-2 mb-2">
                           <div 
                             className={`h-2 rounded-full transition-all duration-500 ${
                               isCriticalCorpus ? 'bg-gradient-to-r from-red-500 to-red-600' :
@@ -953,7 +952,7 @@ const SWPCalculator = ({ sipResult = null }) => {
                         </div>
                         
                         {/* Additional Details */}
-                        <div className="grid grid-cols-3 gap-2 text-xs">
+                        <div className="swp-year-details grid grid-cols-3 gap-2 text-xs">
                           <div>
                             <span className="text-gray-600">Total Withdrawn:</span>
                             <div className="font-semibold">{formatCurrency(yearData.totalWithdrawn)}</div>
