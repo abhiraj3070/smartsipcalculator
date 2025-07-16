@@ -348,20 +348,20 @@ const SIPCalculator = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Success Message */}
         {successMessage && (
-          <div className="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform transition-all duration-300 animate-pulse">
+          <div className="message-popup fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform transition-all duration-300 animate-pulse">
             {successMessage}
           </div>
         )}
 
         {/* General Error Message */}
         {errors.general && (
-          <div className="fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform transition-all duration-300">
+          <div className="message-popup fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform transition-all duration-300">
             {errors.general}
           </div>
         )}
 
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="main-header text-center mb-12">
           <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
             💰 SIP Calculator
           </h1>
@@ -372,19 +372,19 @@ const SIPCalculator = () => {
 
         {/* Tab Navigation */}
         <div className="max-w-4xl mx-auto mb-8">
-          <div className="flex flex-wrap justify-center space-x-1 bg-white rounded-2xl p-2 shadow-lg">
+          <div className="tab-wrapper flex flex-wrap justify-center space-x-1 bg-white rounded-2xl p-2 shadow-lg">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex-1 min-w-0 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
+                className={`tab-button flex-1 min-w-0 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${
                   activeTab === tab.id
                     ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg transform scale-105'
                     : 'text-gray-600 hover:text-gray-800 hover:bg-gray-50'
                 }`}
               >
-                <div className="truncate">{tab.label}</div>
-                <div className="text-xs opacity-75 truncate">{tab.desc}</div>
+                <div className="tab-label truncate">{tab.label}</div>
+                <div className="tab-desc text-xs opacity-75 truncate">{tab.desc}</div>
               </button>
             ))}
           </div>
@@ -392,42 +392,44 @@ const SIPCalculator = () => {
 
         {/* Tab Content */}
         {activeTab === 'calculator' && (
-          <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
+          <div className="main-grid grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
             {/* Left Panel - Input Controls */}
             <div className="space-y-6">
               {/* Investment Amount Card */}
-              <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
+              <div className="input-card bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform duration-300">
                 <label className="block text-gray-700 text-sm font-semibold mb-4">
                   💵 Monthly Investment Amount
                 </label>
-                <div className="flex items-center bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl p-2">
-                  <button
-                    onClick={() => handleValueChange(setInvestmentAmount, investmentAmount, -500)}
-                    className="w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-lg hover:from-red-600 hover:to-pink-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110"
-                  >
-                    -
-                  </button>
-                  <input
-                    type="number"
-                    value={investmentAmount}
-                    onChange={(e) => handleInvestmentAmountChange(e.target.value)}
-                    className="flex-1 bg-transparent text-center text-2xl font-bold text-gray-800 focus:outline-none mx-4"
-                    placeholder="Enter amount"
-                  />
-                  <button
-                    onClick={() => handleValueChange(setInvestmentAmount, investmentAmount, 500)}
-                    className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg hover:from-green-600 hover:to-emerald-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110"
-                  >
-                    +
-                  </button>
+                <div className="input-control flex items-center bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl p-2">
+                  <div className="input-control-row">
+                    <button
+                      onClick={() => handleValueChange(setInvestmentAmount, investmentAmount, -500)}
+                      className="input-button w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-lg hover:from-red-600 hover:to-pink-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110"
+                    >
+                      -
+                    </button>
+                    <input
+                      type="number"
+                      value={investmentAmount}
+                      onChange={(e) => handleInvestmentAmountChange(e.target.value)}
+                      className="input-field flex-1 bg-transparent text-center text-2xl font-bold text-gray-800 focus:outline-none mx-4"
+                      placeholder="Enter amount"
+                    />
+                    <button
+                      onClick={() => handleValueChange(setInvestmentAmount, investmentAmount, 500)}
+                      className="input-button w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-lg hover:from-green-600 hover:to-emerald-600 transition-all duration-200 flex items-center justify-center font-bold shadow-md hover:shadow-lg transform hover:scale-110"
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
                 <div className="mt-4">
-                  <div className="flex flex-wrap gap-2">
+                  <div className="preset-grid flex flex-wrap gap-2">
                     {presetAmounts.map((amount) => (
                       <button
                         key={amount}
                         onClick={() => setInvestmentAmount(amount)}
-                        className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 transform hover:scale-105 ${
+                        className={`preset-button px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 transform hover:scale-105 ${
                           investmentAmount === amount
                             ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-md'
                             : 'bg-blue-100 text-blue-700 hover:bg-blue-200'

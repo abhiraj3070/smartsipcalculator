@@ -1,0 +1,447 @@
+/* Mobile-first responsive styles for SIP Calculator */
+
+/* Base styles - Mobile first */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Container adjustments */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Mobile adjustments for main layout */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 12px;
+  }
+  
+  /* Header adjustments */
+  .main-header {
+    text-align: center;
+    margin-bottom: 24px !important;
+  }
+  
+  .main-header h1 {
+    font-size: 28px !important;
+    line-height: 1.2 !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .main-header p {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+  }
+  
+  /* Tab navigation */
+  .tab-container {
+    margin-bottom: 24px !important;
+  }
+  
+  .tab-wrapper {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    padding: 12px !important;
+  }
+  
+  .tab-button {
+    flex: 1 1 auto !important;
+    min-width: 120px !important;
+    padding: 12px 8px !important;
+    font-size: 12px !important;
+    text-align: center !important;
+  }
+  
+  .tab-button .tab-label {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+  }
+  
+  .tab-button .tab-desc {
+    font-size: 10px !important;
+    opacity: 0.7 !important;
+  }
+  
+  /* Main grid layout */
+  .main-grid {
+    display: block !important;
+    gap: 24px !important;
+  }
+  
+  /* Input sections */
+  .input-section {
+    margin-bottom: 20px !important;
+  }
+  
+  .input-card {
+    padding: 16px !important;
+    margin-bottom: 16px !important;
+  }
+  
+  .input-control {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  
+  .input-control-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+  
+  .input-button {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 16px !important;
+    flex-shrink: 0 !important;
+  }
+  
+  .input-field {
+    font-size: 18px !important;
+    padding: 8px !important;
+    text-align: center !important;
+  }
+  
+  /* Preset buttons */
+  .preset-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    margin-top: 12px !important;
+  }
+  
+  .preset-button {
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    text-align: center !important;
+  }
+  
+  /* Result cards */
+  .result-card {
+    padding: 16px !important;
+    margin-bottom: 16px !important;
+  }
+  
+  .result-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  
+  .result-item {
+    text-align: center !important;
+    padding: 16px !important;
+  }
+  
+  .result-value {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    margin-bottom: 4px !important;
+  }
+  
+  .result-label {
+    font-size: 12px !important;
+    opacity: 0.7 !important;
+  }
+  
+  /* Chart container */
+  .chart-container {
+    width: 100% !important;
+    overflow-x: auto !important;
+    padding: 16px !important;
+  }
+  
+  .chart-canvas {
+    min-width: 300px !important;
+    width: 100% !important;
+    height: 250px !important;
+  }
+  
+  /* Progress bars */
+  .progress-container {
+    margin: 12px 0 !important;
+  }
+  
+  .progress-bar {
+    height: 8px !important;
+    border-radius: 4px !important;
+  }
+  
+  /* Success/Error messages */
+  .message-popup {
+    position: fixed !important;
+    top: 16px !important;
+    left: 16px !important;
+    right: 16px !important;
+    z-index: 1000 !important;
+    font-size: 14px !important;
+    padding: 12px 16px !important;
+    text-align: center !important;
+  }
+  
+  /* Save/Load section */
+  .save-section {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  
+  .save-input {
+    width: 100% !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .save-button {
+    width: 100% !important;
+    padding: 12px !important;
+    font-size: 14px !important;
+  }
+  
+  /* Saved calculations */
+  .saved-item {
+    padding: 12px !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .saved-item-content {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  
+  .saved-item-actions {
+    flex-direction: column !important;
+    gap: 4px !important;
+    width: 100% !important;
+  }
+  
+  .saved-item-button {
+    width: 100% !important;
+    padding: 8px !important;
+    font-size: 12px !important;
+  }
+  
+  /* Advanced calculators */
+  .advanced-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  
+  /* Goal planner */
+  .goal-form {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+  
+  .goal-input-group {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  
+  /* SWP Calculator */
+  .swp-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  
+  /* PDF Generator */
+  .pdf-button {
+    width: 100% !important;
+    padding: 12px !important;
+    font-size: 14px !important;
+  }
+}
+
+/* Tablet styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 0 24px;
+  }
+  
+  .main-header h1 {
+    font-size: 36px !important;
+  }
+  
+  .main-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  
+  .tab-button {
+    min-width: 140px !important;
+  }
+  
+  .preset-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  
+  .result-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .chart-canvas {
+    height: 300px !important;
+  }
+  
+  .advanced-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .swp-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 1025px) {
+  .main-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 32px !important;
+  }
+  
+  .preset-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  
+  .result-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .chart-canvas {
+    height: 400px !important;
+  }
+  
+  .advanced-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .swp-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* Utility classes for responsive behavior */
+.responsive-hide-mobile {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .responsive-hide-mobile {
+    display: none !important;
+  }
+}
+
+.responsive-show-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .responsive-show-mobile {
+    display: block !important;
+  }
+}
+
+/* Fix for touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .hover\:scale-105:hover {
+    transform: none !important;
+  }
+  
+  .hover\:scale-110:hover {
+    transform: none !important;
+  }
+  
+  .transform {
+    transform: none !important;
+  }
+}
+
+/* Improved scrolling for mobile */
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Better text readability on mobile */
+@media (max-width: 768px) {
+  .text-xs {
+    font-size: 12px !important;
+  }
+  
+  .text-sm {
+    font-size: 14px !important;
+  }
+  
+  .text-base {
+    font-size: 16px !important;
+  }
+  
+  .text-lg {
+    font-size: 18px !important;
+  }
+  
+  .text-xl {
+    font-size: 20px !important;
+  }
+  
+  .text-2xl {
+    font-size: 24px !important;
+  }
+  
+  .text-3xl {
+    font-size: 28px !important;
+  }
+  
+  .text-4xl {
+    font-size: 32px !important;
+  }
+  
+  .text-5xl {
+    font-size: 36px !important;
+  }
+}
+
+/* Improved button sizes for mobile */
+@media (max-width: 768px) {
+  .btn-mobile {
+    padding: 12px 16px !important;
+    font-size: 14px !important;
+    min-height: 44px !important;
+  }
+}
+
+/* Better spacing for mobile */
+@media (max-width: 768px) {
+  .py-8 {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+  }
+  
+  .px-4 {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  
+  .mb-12 {
+    margin-bottom: 24px !important;
+  }
+  
+  .mb-8 {
+    margin-bottom: 16px !important;
+  }
+  
+  .gap-8 {
+    gap: 16px !important;
+  }
+}
